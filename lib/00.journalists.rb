@@ -52,6 +52,7 @@ end
 puts "il y a #{tour} handle twitter contenant les lettres aude"
 
 puts "-"*10
+puts "combien de "
 
 
 tour = 0
@@ -63,4 +64,33 @@ for i in 0..handle_twitter.length
   end
 end
 
-puts "il y a #{tour} qui comment par une majuscule"
+puts "il y a #{tour} qui commence par une majuscule apres le @"
+
+
+
+puts "-"*10
+
+count=0
+
+for i in 0..handle_twitter.length
+
+  if handle_twitter[i].to_s.scan(/[A-Z]/).length==1
+    count += 1
+  end
+
+  end
+
+puts "il y a #{count} handle_twitter avec une majuscule"
+
+puts "-"*10
+
+puts "Combien y a-t-il de underscore _ dans tous les pseudos confondus ?"
+
+count=0
+for i in 0..handle_twitter.length
+
+  count += handle_twitter[i].to_s.scan(/_/).count
+
+end
+
+puts "\n Il y a #{count} underscore"
