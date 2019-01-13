@@ -25,12 +25,12 @@ puts "Il y a #{i} handles qui contiennent des chiffres"
 
 puts "-"*10
 
-puts "methode avec .for. et regular expression .REGEX. "
+puts "methode avec .for. et regular expression \d.REGEX. "
 
 count= 0
 
 for i in 0..handle_twitter.length
-  # "~" test un regex check si ca match avec un regular expression  if<= false si 0 ou negatif
+  # "~" test un regex check si ca match avec un regular expression //  if<= false si 0 ou negatif
 
     if handle_twitter[i]=~/\d/
       count+=1
@@ -61,6 +61,7 @@ for i in 0..handle_twitter.length
   if handle_twitter[i].to_s=~/[@][A-Z]/
 
     tour+=1
+
   end
 end
 
@@ -94,3 +95,47 @@ for i in 0..handle_twitter.length
 end
 
 puts "\n Il y a #{count} underscore"
+
+puts "-"*10
+puts "\n"
+
+puts "Trie la liste de handle par ordre alphabétique."
+# autre facon => handle_twitter.sort {|a,b|a<=>b}  si on fait a,b|b<=>a decroissant
+sorted = handle_twitter.sort
+puts sorted
+
+puts "-"*10
+puts "\n"
+
+puts "Quels sont les 50 handles les plus courts de ce array ?"
+puts "\n"
+
+arr = handle_twitter.sort_by{|handle| handle.length}
+puts arr[0..49]
+
+puts "\n"
+
+puts "Quelle est la position dans l'array de la personne @epenser ?"
+puts "\n"
+
+position = handle_twitter.index("@epenser")
+puts "la personne @epenser est a la position #{position} de l'array"
+
+puts "-"*10
+
+my_hash = Hash.new
+
+for i in 0..crypto_names.length-1 do
+	my_hash[crypto_names[i]] = crypto_values[i].sub("$", "").to_f
+end
+
+puts "Number of crypto in the hash : #{my_hash.length}"
+counter = 0
+
+my_hash.each do |key, value|
+	if key.include? "coin"
+		counter += 1
+	end
+end
+
+puts "Number of crypto containing \"coin\" : #{counter}"
